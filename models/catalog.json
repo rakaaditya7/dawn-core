@@ -100,6 +100,22 @@
       "attribution": "Helsinki-NLP / OPUS-MT"
     },
     {
+      "id": "opus-mt-en-id-ct2-int8",
+      "sources": [
+        "en"
+      ],
+      "targets": [
+        "id"
+      ],
+      "urls": [
+        "https://github.com/rakaaditya7/dawn-core/releases/download/packs-v1/opus-mt-en-id-ct2-int8.zip"
+      ],
+      "sizeBytes": 67623576,
+      "sha256": "63802a7a144929624fbe3efd8fd40e5fb96f3e2c9fe976355c23ce367357deae",
+      "license": "Apache-2.0",
+      "attribution": "Helsinki-NLP / OPUS-MT"
+    },
+    {
       "id": "opus-mt-en-it-ct2-int8",
       "sources": [
         "en"
@@ -112,6 +128,22 @@
       ],
       "sizeBytes": 69751346,
       "sha256": "946abcc423f6196a0d793d194d9b5ecb62442b06f917acecbadc7ccc4692dbc2",
+      "license": "Apache-2.0",
+      "attribution": "Helsinki-NLP / OPUS-MT"
+    },
+    {
+      "id": "opus-mt-en-nl-ct2-int8",
+      "sources": [
+        "en"
+      ],
+      "targets": [
+        "nl"
+      ],
+      "urls": [
+        "https://github.com/rakaaditya7/dawn-core/releases/download/packs-v1/opus-mt-en-nl-ct2-int8.zip"
+      ],
+      "sizeBytes": 68449194,
+      "sha256": "9d46374d15988eeb337d88d4591a8a21daaf77c0421c0cde679468043e89b1df",
       "license": "Apache-2.0",
       "attribution": "Helsinki-NLP / OPUS-MT"
     },
@@ -197,6 +229,22 @@
       "attribution": "Helsinki-NLP / OPUS-MT"
     },
     {
+      "id": "opus-mt-id-en-ct2-int8",
+      "sources": [
+        "id"
+      ],
+      "targets": [
+        "en"
+      ],
+      "urls": [
+        "https://github.com/rakaaditya7/dawn-core/releases/download/packs-v1/opus-mt-id-en-ct2-int8.zip"
+      ],
+      "sizeBytes": 68146828,
+      "sha256": "ba059c2acfbb16b12a772ca0be9575f931f6fdd08626b8476b08a3afbd7c592a",
+      "license": "Apache-2.0",
+      "attribution": "Helsinki-NLP / OPUS-MT"
+    },
+    {
       "id": "opus-mt-it-en-ct2-int8",
       "sources": [
         "it"
@@ -225,6 +273,22 @@
       ],
       "sizeBytes": 64740187,
       "sha256": "7ea71364fdf7625d342cc5049837fe7aa012a75492c0a6f8ecc8a06250d8c1dd",
+      "license": "Apache-2.0",
+      "attribution": "Helsinki-NLP / OPUS-MT"
+    },
+    {
+      "id": "opus-mt-nl-en-ct2-int8",
+      "sources": [
+        "nl"
+      ],
+      "targets": [
+        "en"
+      ],
+      "urls": [
+        "https://github.com/rakaaditya7/dawn-core/releases/download/packs-v1/opus-mt-nl-en-ct2-int8.zip"
+      ],
+      "sizeBytes": 66882758,
+      "sha256": "ce80a620d1377ea0289cb6e1884ea207292a062cfe38c64eea3fc522b328c14a",
       "license": "Apache-2.0",
       "attribution": "Helsinki-NLP / OPUS-MT"
     },
@@ -406,6 +470,15 @@
       ]
     },
     {
+      "code": "id",
+      "name": "Indonesian",
+      "nativeName": "Bahasa Indonesia",
+      "models": [
+        "opus-mt-en-id-ct2-int8",
+        "opus-mt-id-en-ct2-int8"
+      ]
+    },
+    {
       "code": "it",
       "name": "Italian",
       "nativeName": "Italiano",
@@ -422,6 +495,15 @@
       "models": [
         "opus-mt-tc-bible-big-mul-ct2-int8",
         "opus-mt-ja-en-ct2-int8"
+      ]
+    },
+    {
+      "code": "nl",
+      "name": "Dutch",
+      "nativeName": "Nederlands",
+      "models": [
+        "opus-mt-en-nl-ct2-int8",
+        "opus-mt-nl-en-ct2-int8"
       ]
     },
     {

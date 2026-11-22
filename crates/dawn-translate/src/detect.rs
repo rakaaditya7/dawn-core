@@ -85,7 +85,7 @@ const COMMON_WORDS: &[(&str, &[&str])] = &[
     ("danke", &["de"]),
     ("bitte", &["de"]),
     ("tschüss", &["de"]),
-    ("ja", &["de"]),
+    ("ja", &["de", "nl"]),
     ("nein", &["de"]),
     ("guten", &["de"]),
     ("tag", &["de"]),
@@ -114,6 +114,19 @@ const COMMON_WORDS: &[(&str, &[&str])] = &[
     ("merhaba", &["tr"]),
     ("teşekkürler", &["tr"]),
     ("dank", &["nl"]),
+    ("bedankt", &["nl"]),
+    ("alsjeblieft", &["nl"]),
+    ("goedemorgen", &["nl"]),
+    ("nee", &["nl"]),
+    ("halo", &["id"]),
+    ("terima", &["id"]),
+    ("kasih", &["id"]),
+    ("selamat", &["id"]),
+    ("maaf", &["id"]),
+    ("tolong", &["id"]),
+    ("tidak", &["id"]),
+    ("apa", &["id"]),
+    ("bagaimana", &["id"]),
 ];
 
 fn word_count(text: &str) -> usize {
@@ -165,6 +178,7 @@ const STOP_WORDS: &[(&str, &[&str])] = &[
     ("it", &["il", "che", "non", "per", "sono", "della", "gli", "questo", "ma", "anche"]),
     ("pt", &["os", "uma", "não", "você", "está", "mais", "são"]),
     ("nl", &["het", "een", "niet", "van", "ik", "je", "zijn", "voor", "maar"]),
+    ("id", &["yang", "dan", "di", "ke", "dari", "ini", "itu", "untuk", "dengan", "tidak", "ada", "adalah", "saya", "anda", "kami", "kita", "sudah", "akan", "bisa", "juga"]),
 ];
 
 /// The language of `allowed` whose function words occur most, if one clearly leads.
@@ -383,5 +397,20 @@ mod tests {
         assert!(!is_short(text));
         assert!(is_short("Guten Tag zusammen"));
         assert!(is_short("Aufgabe"));
+    }
+
+    #[test]
+    fn indonesian_and_dutch_are_detected() {
+        assert_eq!(detect_in_context("Halo", &active(&["en", "id", "nl"]), Some("en")), lang("id"));
+        assert_eq!(detect_in_context("Terima kasih", &active(&["en", "id"]), Some("en")), lang("id"));
+        assert_eq!(detect_in_context("Bedankt", &active(&["en", "id", "nl"]), Some("en")), lang("nl"));
+        assert_eq!(
+            detect_language("Saya ingin menerjemahkan dokumen ini dari bahasa Indonesia ke bahasa Belanda."),
+            lang("id")
+        );
+        assert_eq!(
+            detect_language("Ik wil dit document graag van het Nederlands naar het Engels vertalen."),
+            lang("nl")
+        );
     }
 }

@@ -1,0 +1,85 @@
+name: Publish Language Packs
+
+on:
+  workflow_dispatch:
+    inputs:
+      languages:
+        description: "Space-separated language codes to convert and publish"
+        required: true
+        default: "id nl"
+      release_tag:
+        description: "GitHub release tag for hosting the converted packs"
+        required: true
+        default: "packs-v1"
+
+permissions:
+  contents: write
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install conversion dependencies
+        run: |
+          python -m pip install --upgrade pip
+          python -m pip install -r tools/convert-models/requirements.txt --extra-index-url https://download.pytorch.org/whl/cpu
+
+      - name: Convert language models and update catalog
+        run: |
+          python tools/convert-models/convert.py ${{ inputs.languages }} --update-catalog models/catalog.json
+
+      - name: Rewrite file:// URLs to GitHub Release URLs
+        env:
+          REPO: ${{ github.repository }}
+          TAG: ${{ inputs.release_tag }}
+        run: |
+          python - <<'PY'
+          import json, os
+          from pathlib import Path
+
+          repo = os.environ["REPO"]
+          tag = os.environ["TAG"]
+          path = Path("models/catalog.json")
+          data = json.loads(path.read_text(encoding="utf-8"))
+          for model in data.get("models", []):
+              urls = model.get("urls", [])
+              if any(u.startswith("file://") for u in urls):
+                  model["urls"] = [f"https://github.com/{repo}/releases/download/{tag}/{model['id']}.zip"]
+          path.write_text(json.dumps(data, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
+          PY
+
+      - name: Upload converted packs to GitHub Release
+        env:
+          GH_TOKEN: ${{ github.token }}
+          TAG: ${{ inputs.release_tag }}
+        run: |
+          shopt -s nullglob
+          zips=(tools/convert-models/out/*.zip)
+          if [ ${#zips[@]} -eq 0 ]; then
+            echo "No converted zip files found"
+            exit 1
+          fi
+          if gh release view "$TAG" >/dev/null 2>&1; then
+            gh release upload "$TAG" "${zips[@]}" --clobber
+          else
+            gh release create "$TAG" "${zips[@]}" \
+              --title "Language packs ($TAG)" \
+              --notes "CTranslate2 int8 OPUS-MT language packs converted via GitHub Actions."
+          fi
+
+      - name: Commit updated catalog.json
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add models/catalog.json
+          if ! git diff --cached --quiet; then
+            git commit -m "chore: publish language packs ${{ inputs.release_tag }}"
+            git push
+          fi

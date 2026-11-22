@@ -43,6 +43,8 @@ NAMES = {
     "ru": ("Russian", "Русский"),
     "zh": ("Chinese", "中文"),
     "ja": ("Japanese", "日本語"),
+    "id": ("Indonesian", "Bahasa Indonesia"),
+    "nl": ("Dutch", "Nederlands"),
 }
 
 
