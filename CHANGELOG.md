@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.8.0](https://github.com/rakaaditya7/dawn-core/compare/v0.7.0...v0.8.0) (2026-11-22)
+
+
+### Features
+
+* add Indonesian (id) and Dutch (nl) language packs and detection ([a20f2c6](https://github.com/rakaaditya7/dawn-core/commit/a20f2c6e78014d3d0c31bdeb33f63ae6bd7fbc87))
+
 ## [0.7.0](https://github.com/Second-Dawn-Lab/dawn-core/compare/v0.6.0...v0.7.0) (2026-11-18)
 
 
