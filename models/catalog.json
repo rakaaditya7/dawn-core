@@ -111,7 +111,7 @@
         "https://github.com/rakaaditya7/dawn-core/releases/download/packs-v1/opus-mt-en-id-ct2-int8.zip"
       ],
       "sizeBytes": 67623576,
-      "sha256": "63802a7a144929624fbe3efd8fd40e5fb96f3e2c9fe976355c23ce367357deae",
+      "sha256": "ae9e385f587a75d2442be42a605c04d6815af52048e5c26e5b6aacaec7b84c18",
       "license": "Apache-2.0",
       "attribution": "Helsinki-NLP / OPUS-MT"
     },
@@ -143,7 +143,7 @@
         "https://github.com/rakaaditya7/dawn-core/releases/download/packs-v1/opus-mt-en-nl-ct2-int8.zip"
       ],
       "sizeBytes": 68449194,
-      "sha256": "9d46374d15988eeb337d88d4591a8a21daaf77c0421c0cde679468043e89b1df",
+      "sha256": "ebe15d77cc74168eb62096fcd4d1ee29fb5708f957c329f03def841a5400b167",
       "license": "Apache-2.0",
       "attribution": "Helsinki-NLP / OPUS-MT"
     },
@@ -240,7 +240,7 @@
         "https://github.com/rakaaditya7/dawn-core/releases/download/packs-v1/opus-mt-id-en-ct2-int8.zip"
       ],
       "sizeBytes": 68146828,
-      "sha256": "ba059c2acfbb16b12a772ca0be9575f931f6fdd08626b8476b08a3afbd7c592a",
+      "sha256": "09c22856e3647232e32d5e8e94c9d2d94b7ac3c564b88e60a320046578e9c5c9",
       "license": "Apache-2.0",
       "attribution": "Helsinki-NLP / OPUS-MT"
     },
@@ -288,7 +288,7 @@
         "https://github.com/rakaaditya7/dawn-core/releases/download/packs-v1/opus-mt-nl-en-ct2-int8.zip"
       ],
       "sizeBytes": 66882758,
-      "sha256": "ce80a620d1377ea0289cb6e1884ea207292a062cfe38c64eea3fc522b328c14a",
+      "sha256": "60fc177bed503b4e93eb291caf2384fe6493a01053f99121c82cb23028acd088",
       "license": "Apache-2.0",
       "attribution": "Helsinki-NLP / OPUS-MT"
     },
